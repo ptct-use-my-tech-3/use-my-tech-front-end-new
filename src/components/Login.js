@@ -1,4 +1,4 @@
-import { React, useState, useEffect, useContext } from "react";
+import { React, useState, useEffect } from "react";
 import {
 	Grid,
 	Paper,
@@ -30,9 +30,7 @@ const Login = (props) => {
 
 	//holds error state
 	const [errors, setErrors]=useState({ 
-		// username: "", 
 		email: "",
-		// userType: "",
 		password: ""
 	})
 	//NOTE: add back username and usertype once backend is readty. 
@@ -96,28 +94,8 @@ const Login = (props) => {
 					label="Email"
 					fullWidth
 					required
-				/>
-				{/* <TextField
-					id="email"
-					name="email"
-					value={signIn.username}
-					onChange={handleChange}
-					label="Username"
-					placeholder="Enter username"
-					fullWidth
-					required
 					mt={9}
 				/>
-				<TextField
-					id="password"
-					value={signIn.password}
-					onChange={handleChange}
-					label="Password"
-					placeholder="Enter password"
-					type="password"
-					fullWidth
-					required
-				/> */}
 
 				<TextField
 					id="password"
