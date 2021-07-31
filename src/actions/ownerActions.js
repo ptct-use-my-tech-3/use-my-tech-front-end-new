@@ -1,4 +1,4 @@
-import axios from 'axios'
+
 import axiosWithAuth from '../helpers/axiosWithAuth'
 
 // actions to be dispatched when the owner makes a http request in the UI
