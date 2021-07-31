@@ -8,9 +8,8 @@ import {
 	Link,
 } from "@material-ui/core";
 import { signInFormSchema }   from '../schemas/signInFormSchema';
-
-import * as Yup from 'yup'
 import { axiosWithAuth } from "../helpers/axiosWithAuth";
+import * as Yup from 'yup'
 import { postLogin } from "../actions/loginActions";
 import { connect } from "react-redux";
 
