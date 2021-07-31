@@ -6,6 +6,12 @@ import {
 	Button,
 	Typography,
 	Link,
+	FormControl,
+	FormLabel,
+	Radio,
+	RadioGroup,
+	FormControlLabel,
+
 } from "@material-ui/core";
 import { signUpFormSchema }   from '../schemas/signUpFormSchema'
 import { axiosWithAuth } from "../helpers/axiosWithAuth";
@@ -31,22 +37,22 @@ const Signup = (props) => {
 
 	// holds state to sign up
 	const [signUp, setSignup] = useState({
-		// username: "",
 		email: "",
 		password: "",
-		// userType: "",
+		userType: "",
 		confirmpassword: "",
 	});
+
 	//holds error state
 	const [errors, setErrors]=useState({ 
-		// username: "", 
+		
 		email: "",
-		// userType: "",
+		userType: "",
 		password: "", 
 		confirmpassword: ""
 	
 	})
-	//NOTE: add back username and usertype once backend is readty. 
+	
 
 	//
 	const[disabled, setDisabled] = useState(true);
@@ -90,17 +96,6 @@ const Signup = (props) => {
 					<h2>Sign Up</h2>
 				</Grid>
 				
-				{/* <TextField
-					id="username"
-					name="username"
-					helperText={errors.username}
-					value={signUp.username}
-					onChange={handleChange}
-					label="Username"
-					fullWidth
-					required
-				/> */}
-				
 				<TextField
 					id="email"
 					name="email"
@@ -112,22 +107,13 @@ const Signup = (props) => {
 					fullWidth
 					required
 				/>
-
-				{/* <TextField
-					id="userType"
-					name="userType"
-					helperText={errors.userType}
-					value={signUp.userType.value}
-					label="User Type"
-					onChange={handleChange}
-					select
-					fullWidth
-					required
-				>
-					<MenuItem value={"borrower"}>Borrower</MenuItem>
-					<MenuItem value={"lender"}>Lender</MenuItem>
-				</TextField> */}
-				
+				<FormControl component="fieldset">
+					<FormLabel component="legend">Account Type</FormLabel>
+					<RadioGroup aria-label="account type" name="gender1" value={signUp.value} onChange={handleChange}>
+						<FormControlLabel value="owner" control={<Radio />} label="Owner" />
+						<FormControlLabel value="owner" control={<Radio />} label="Renter" />
+					</RadioGroup>
+				</FormControl>
 				<TextField
 					id="password"
 					name="password"
