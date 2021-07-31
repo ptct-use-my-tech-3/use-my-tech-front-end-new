@@ -2,17 +2,13 @@ import * as Yup from 'yup';
 
 
 export  const signUpFormSchema = Yup.object().shape({
-    // username: Yup
-    //     // .string()
-	// 	// .required("Must include a username")
-	// 	// .min(4,"Username must be at least 4 characters long."),
     email: Yup
 		.string()
 		.email("Must be a valid email address.")
 		.required("Must include email address."),
-    // userType: Yup
-    //     .string()
-    //     .required(),
+    userType: Yup
+        .string()
+        .required("Must Select a User Type"),
     password: Yup
 		.string()
 		.required("Password is Required")
@@ -20,5 +16,5 @@ export  const signUpFormSchema = Yup.object().shape({
 	confirmpassword: Yup
 		.string()
 		.required("Must re-enter password")
-		// .oneOf([Yup.ref('password')],'Confirm Password: Passwords must match')
+		.oneOf([Yup.ref('password'), null],'Confirm Password: Passwords must match')
 });
