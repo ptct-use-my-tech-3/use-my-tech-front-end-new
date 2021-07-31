@@ -15,6 +15,9 @@ import React from 'react';
 import ImageUpload from './ImageUpload';
 import ListingFormSchema from '../schemas/ListingFormSchema';
 
+import { createItem } from '../actions/ownerActions';
+import { connect } from 'react-redux';
+
 const useStyles = makeStyles(theme => ({
     layout: {
         width: 'auto',
@@ -47,7 +50,7 @@ const CreateListing = props => {
         'name':        '',
         'description': '',
         'cost':        0,
-        'image':       undefined,
+        'image':       undefined, // this should be a string.
         'tags':        ''
     };
 
@@ -81,14 +84,7 @@ const CreateListing = props => {
         e.preventDefault();
 
         // POST to server
-        axios.post('https://reqres.in/api/posts', listing)
-            .then(res => {
-                console.log(res);
-                // Should redirect us to our listing page, where we can click to edit or delete the posting
-            })
-            .catch(err => {
-                console.log(err);
-            });
+        props.createItem(listing)
     };
 
     // Enable / Disable the Create Listing Button
@@ -169,4 +165,15 @@ const CreateListing = props => {
     );
 }
 
-export default CreateListing;
+
+const mapStateToProps=(state)=>{
+    return {
+        listings:state.listingReducer.listings,
+        error:state.listingReducer.error,
+        loading:state.listingReducer.loading
+    }
+}
+
+const mapDispatchToProps ={createItem}
+
+export default connect(mapStateToProps,mapDispatchToProps)(CreateListing);
