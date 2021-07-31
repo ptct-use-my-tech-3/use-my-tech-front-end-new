@@ -59,7 +59,7 @@ const Login = (props) => {
 	// submit token for authentication 
 	const handleSubmit = (e) => {
 		e.preventDefault()
-		
+		props.postLogin(signIn)
 	}
 
 	// disables submit button until form is valid
