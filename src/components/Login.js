@@ -8,7 +8,6 @@ import {
 	Link,
 } from "@material-ui/core";
 import { signInFormSchema }   from '../schemas/signInFormSchema';
-import { UserContext } from "../context/userContext";
 import { axiosWithAuth } from "../helpers/axiosWithAuth";
 import * as Yup from 'yup'
 
@@ -40,8 +39,7 @@ const Login = (props) => {
 
 	//
 	const[disabled, setDisabled] = useState(true);
-	// const {userData, setUserData} = useContext(UserContext)
-	//
+	
 	const setFormErrors = (name, value)=>{
 		Yup.reach(signInFormSchema, name).validate(value)
 		.then(()=> setErrors({...errors, [name]:''}))
@@ -130,7 +128,7 @@ const Login = (props) => {
 					variant="contained"
 					style={btnstyle}
 					fullWidth
-					disable={disabled}
+					disabled={disabled}
 				>
 					Log In
 				</Button>
