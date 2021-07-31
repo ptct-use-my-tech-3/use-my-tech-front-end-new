@@ -11,6 +11,9 @@ import { signUpFormSchema }   from '../schemas/signUpFormSchema'
 import { axiosWithAuth } from "../helpers/axiosWithAuth";
 import * as Yup from 'yup'
 
+import { postSignup } from "../actions/signupActions";
+import { connect } from "react-redux";
+
 
 
 const Signup = (props) => {
@@ -68,14 +71,7 @@ const Signup = (props) => {
 	//
 	const handleSubmit = (e) =>{
 		e.preventDefault();
-		axiosWithAuth()
-			.post('/register', signUp)
-			.then( res =>{
-				console.log(res.data)
-				localStorage.setItem('token', JSON.stringify(res.data))
-				props.history.push('/home');
-			})
-			.catch( err => console.log(err))
+		props.postSignup(signUp)
 
 	}
 
@@ -180,4 +176,13 @@ const Signup = (props) => {
 	);
 };
 
-export default Signup;
+const mapStateToProps=(state)=>{
+	return {
+		signUp:state.signupReducer.signUp,
+		error: state.signupReducer.error,
+		loading:state.signupReducer.loading		
+	}
+}
+
+const mapDispatchToProps ={postSignup}
+export default connect(mapStateToProps,mapDispatchToProps)(Signup);
