@@ -61,26 +61,7 @@ const Login = (props) => {
 	// submit token for authentication 
 	const handleSubmit = (e) => {
 		e.preventDefault()
-		axiosWithAuth()
-			.post('/login', signIn)
-			.then((res) => {
-				localStorage.setItem('token', res.data.payload)
-				// setUserData({
-				// 	...userData,
-				// 	token: res.data.token,
-				// 	owner: res.data.owner,
-				// 	userId: res.data.id
-				// })
-				props.history.push('/home')
-			})
-			.catch(err => {
-				console.log({err})
-			// setUserData({
-			// 	...userData,
-			// 	error: err
-			// })
-			
-			});
+		
 	}
 
 	// disables submit button until form is valid
