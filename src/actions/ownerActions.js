@@ -36,9 +36,9 @@ export const createItem=(item)=>(dispatch)=>{
 
 
 // allow owner to delete an item
-export const deleteItem=(id)=>(dispatch)=>{
+export const deleteItem=(item_id)=>(dispatch)=>{
     dispatch({type:LISTING_START})
-    axiosWithAuth().delete(`/api/items/${id}`)
+    axiosWithAuth().delete(`/api/items/${item_id}`)
     .then(success=>{
         console.log(success)
         dispatch({type:LISTING_SUCCESS,payload:success.data})
