@@ -14,7 +14,6 @@ import {
 
 } from "@material-ui/core";
 import { signUpFormSchema }   from '../schemas/signUpFormSchema'
-import { axiosWithAuth } from "../helpers/axiosWithAuth";
 import * as Yup from 'yup'
 
 import { postSignup } from "../actions/signupActions";
