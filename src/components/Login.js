@@ -1,4 +1,4 @@
-import { React, useState, useEffect, useContext } from "react";
+import { React, useState, useEffect } from "react";
 import {
 	Grid,
 	Paper,
@@ -8,9 +8,11 @@ import {
 	Link,
 } from "@material-ui/core";
 import { signInFormSchema }   from '../schemas/signInFormSchema';
-import { UserContext } from "../context/userContext";
-import { axiosWithAuth } from "../helpers/axiosWithAuth";
+
 import * as Yup from 'yup'
+
+import { postLogin } from "../actions/loginActions";
+import { connect } from "react-redux";
 
 const Login = (props) => {
 	// sets paper like style
@@ -61,26 +63,7 @@ const Login = (props) => {
 	// submit token for authentication 
 	const handleSubmit = (e) => {
 		e.preventDefault()
-		axiosWithAuth()
-			.post('/login', signIn)
-			.then((res) => {
-				localStorage.setItem('token', res.data.payload)
-				// setUserData({
-				// 	...userData,
-				// 	token: res.data.token,
-				// 	owner: res.data.owner,
-				// 	userId: res.data.id
-				// })
-				props.history.push('/home')
-			})
-			.catch(err => {
-				console.log({err})
-			// setUserData({
-			// 	...userData,
-			// 	error: err
-			// })
-			
-			});
+		props.postLogin(signIn)
 	}
 
 	// disables submit button until form is valid
@@ -169,4 +152,15 @@ const Login = (props) => {
 	);
 };
 
-export default Login;
+const mapStateToProps=(state)=>{
+	return{
+		login:state.loginReducer.login,
+		error:state.loginReduer.error,
+		loading:state.loginReduer.loading
+	}
+}
+
+const mapDispatchToProps={postLogin}
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(Login)
