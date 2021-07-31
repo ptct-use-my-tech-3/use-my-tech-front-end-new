@@ -4,7 +4,7 @@ import {
     LISTING_START,
     LISTING_FAILURE,
     LISTING_SUCCESS
-} from '../actions/loginActions'
+} from '../actions/ownerActions'
 
 
 const initialState={
