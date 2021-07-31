@@ -1,4 +1,4 @@
-import axios from 'axios'
+
 import axiosWithAuth from '../helpers/axiosWithAuth'
 
 export const RENTER_START = 'RENTER_START'
