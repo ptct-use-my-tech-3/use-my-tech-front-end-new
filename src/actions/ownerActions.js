@@ -1,5 +1,5 @@
 import axios from 'axios'
-import axiosWithAuth from '../helpers/axiosWithAuth'
+import {axiosWithAuth} from '../helpers/axiosWithAuth'
 
 // actions to be dispatched when the owner makes a http request in the UI
 export const LISTING_START = 'LISTING_START'
