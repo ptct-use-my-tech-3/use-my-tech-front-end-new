@@ -1,4 +1,8 @@
-// TODO IMPORT ACTIONS
+import {
+    LOGIN_START,
+    LOGIN_FAILURE,
+    LOGIN_SUCCESS
+} from '../actions/loginActions'
 
 const initialState={
     login: {},
