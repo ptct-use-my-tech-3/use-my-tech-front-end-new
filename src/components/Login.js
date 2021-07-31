@@ -130,8 +130,8 @@ const Login = (props) => {
 const mapStateToProps=(state)=>{
 	return{
 		login:state.loginReducer.login,
-		error:state.loginReduer.error,
-		loading:state.loginReduer.loading
+		error:state.loginReducer.error,
+		loading:state.loginReducer.loading
 	}
 }
 

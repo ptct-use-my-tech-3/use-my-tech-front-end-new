@@ -55,6 +55,7 @@ const Signup = (props) => {
 
 	//
 	const[disabled, setDisabled] = useState(true);
+	const [RadioValue, setRadioValue] = useState('')
 
 	//
 	const setFormErrors = (name, value)=>{
@@ -67,6 +68,7 @@ const Signup = (props) => {
 	const handleChange = (e) => {
 		const { name, value } = e.target;
 		setFormErrors(name, value)
+		setRadioValue(name,value)
 		setSignup((prevState) => ({
 			...prevState,
 			[name]: value,
@@ -108,9 +110,9 @@ const Signup = (props) => {
 				/>
 				<FormControl component="fieldset">
 					<FormLabel component="legend">Account Type</FormLabel>
-					<RadioGroup aria-label="account type" name="gender1" value={signUp.value} onChange={handleChange}>
+					<RadioGroup  name="userType" value={signUp.value} onChange={handleChange}>
 						<FormControlLabel value="owner" control={<Radio />} label="Owner" />
-						<FormControlLabel value="owner" control={<Radio />} label="Renter" />
+						<FormControlLabel value="renter" control={<Radio />} label="Renter" />
 					</RadioGroup>
 				</FormControl>
 				<TextField
