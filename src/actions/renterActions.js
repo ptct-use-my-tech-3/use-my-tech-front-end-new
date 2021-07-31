@@ -1,5 +1,5 @@
 
-import axiosWithAuth from '../helpers/axiosWithAuth'
+import {axiosWithAuth} from '../helpers/axiosWithAuth'
 
 export const RENTER_START = 'RENTER_START'
 export const RENTER_SUCCESS = 'RENTER_SUCCESS'

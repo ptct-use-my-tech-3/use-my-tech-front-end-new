@@ -5,7 +5,7 @@ import {
 } from '../actions/renterActions'
 
 const initialState={
-    rentedItems={},
+    rentedItems:{},
     error:'',
     loading:true
 }
