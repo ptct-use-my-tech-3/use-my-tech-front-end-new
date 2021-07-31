@@ -6,7 +6,12 @@ import {
 	Button,
 	Typography,
 	Link,
-	MenuItem
+	FormControl,
+	FormLabel,
+	Radio,
+	RadioGroup,
+	FormControlLabel,
+
 } from "@material-ui/core";
 import { signUpFormSchema }   from '../schemas/signUpFormSchema'
 import { axiosWithAuth } from "../helpers/axiosWithAuth";
@@ -106,22 +111,13 @@ const Signup = (props) => {
 					fullWidth
 					required
 				/>
-
-				<TextField
-					id="userType"
-					name="userType"
-					helperText={errors.userType}
-					value={signUp.userType.value}
-					label="User Type"
-					onChange={handleChange}
-					select
-					fullWidth
-					required
-				>
-					<MenuItem value={"owner"}>Owner</MenuItem>
-					<MenuItem value={"renter"}>Renter</MenuItem>
-				</TextField>
-				
+				<FormControl component="fieldset">
+					<FormLabel component="legend">Account Type</FormLabel>
+					<RadioGroup aria-label="account type" name="gender1" value={signUp.value} onChange={handleChange}>
+						<FormControlLabel value="owner" control={<Radio />} label="Owner" />
+						<FormControlLabel value="owner" control={<Radio />} label="Renter" />
+					</RadioGroup>
+				</FormControl>
 				<TextField
 					id="password"
 					name="password"
