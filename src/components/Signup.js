@@ -21,6 +21,7 @@ import { connect } from "react-redux";
 
 
 
+
 const Signup = (props) => {
 	
 	// sets styling of paper background
@@ -30,6 +31,12 @@ const Signup = (props) => {
 		width: 380,
 		margin: "60px auto",
 	};
+
+	const radioStyle ={
+		margin: "30px auto",
+		display: 'flex',
+		textAlign: 'left'
+	}
 
 	// sets style of button
 	const btnstyle = { margin: "20px 0" };
@@ -108,13 +115,7 @@ const Signup = (props) => {
 					fullWidth
 					required
 				/>
-				<FormControl component="fieldset">
-					<FormLabel component="legend">Account Type</FormLabel>
-					<RadioGroup  name="userType" value={signUp.value} onChange={handleChange}>
-						<FormControlLabel value="owner" control={<Radio />} label="Owner" />
-						<FormControlLabel value="renter" control={<Radio />} label="Renter" />
-					</RadioGroup>
-				</FormControl>
+				
 				<TextField
 					id="password"
 					name="password"
@@ -138,6 +139,13 @@ const Signup = (props) => {
 					fullWidth
 					required
 				/>
+				<FormControl component="fieldset" style={radioStyle}>
+					<FormLabel component="legend">Account Type</FormLabel>
+					<RadioGroup  name="userType" value={signUp.value} onChange={handleChange}required>
+						<FormControlLabel value="owner" control={<Radio />} label="Owner" />
+						<FormControlLabel value="renter" control={<Radio />} label="Renter" />
+					</RadioGroup>
+				</FormControl>
 				
 				<Button
 					type="submit"
