@@ -1,4 +1,5 @@
 import { React, useState, useEffect } from "react";
+import { useHistory } from "react-router";
 import {
 	Grid,
 	Paper,
@@ -13,6 +14,9 @@ import { postLogin } from "../actions/loginActions";
 import { connect } from "react-redux";
 
 const Login = (props) => {
+
+    const {push} = useHistory()
+
 	// sets paper like style
 	const paperStyle = {
 		padding: 20,
@@ -31,10 +35,10 @@ const Login = (props) => {
 
 	//holds error state
 	const [errors, setErrors]=useState({ 
-		email: "",
+		username: "",
 		password: ""
 	})
-	//NOTE: add back username and usertype once backend is readty. 
+	 
 
 	//
 	const[disabled, setDisabled] = useState(true);
@@ -58,9 +62,9 @@ const Login = (props) => {
 	// submit token for authentication 
 	const handleSubmit = (e) => {
 		e.preventDefault()
-		props.postLogin(signIn)
-		props.history.push('/home')
-	
+
+		props.postLogin(signIn,push)
+
 	}
 
 	// disables submit button until form is valid
@@ -79,13 +83,13 @@ const Login = (props) => {
 				</Grid>
 
 				<TextField
-					id="email"
-					name="email"
+					id="username"
+					name="username"
 					helperText={errors.email}
 					value={signIn.email}
 					onChange={handleChange}
 					email
-					label="Email"
+					label="Email/Username"
 					fullWidth
 					required
 					mt={9}
