@@ -6,13 +6,19 @@ import {
 	Button,
 	Typography,
 	Link,
+	FormControl,
+	FormLabel,
+	Radio,
+	RadioGroup,
+	FormControlLabel,
+
 } from "@material-ui/core";
 import { signUpFormSchema }   from '../schemas/signUpFormSchema'
-import { axiosWithAuth } from "../helpers/axiosWithAuth";
 import * as Yup from 'yup'
 
 import { postSignup } from "../actions/signupActions";
 import { connect } from "react-redux";
+
 
 
 
@@ -26,30 +32,37 @@ const Signup = (props) => {
 		margin: "60px auto",
 	};
 
+	const radioStyle ={
+		margin: "30px auto",
+		display: 'flex',
+		textAlign: 'left'
+	}
+
 	// sets style of button
 	const btnstyle = { margin: "20px 0" };
 
 	// holds state to sign up
 	const [signUp, setSignup] = useState({
-		// username: "",
 		email: "",
 		password: "",
-		// userType: "",
+		userType: "",
 		confirmpassword: "",
 	});
+
 	//holds error state
 	const [errors, setErrors]=useState({ 
-		// username: "", 
+		
 		email: "",
-		// userType: "",
+		userType: "",
 		password: "", 
 		confirmpassword: ""
 	
 	})
-	//NOTE: add back username and usertype once backend is readty. 
+	
 
 	//
 	const[disabled, setDisabled] = useState(true);
+	const [RadioValue, setRadioValue] = useState('')
 
 	//
 	const setFormErrors = (name, value)=>{
@@ -62,6 +75,7 @@ const Signup = (props) => {
 	const handleChange = (e) => {
 		const { name, value } = e.target;
 		setFormErrors(name, value)
+		setRadioValue(name,value)
 		setSignup((prevState) => ({
 			...prevState,
 			[name]: value,
@@ -90,17 +104,6 @@ const Signup = (props) => {
 					<h2>Sign Up</h2>
 				</Grid>
 				
-				{/* <TextField
-					id="username"
-					name="username"
-					helperText={errors.username}
-					value={signUp.username}
-					onChange={handleChange}
-					label="Username"
-					fullWidth
-					required
-				/> */}
-				
 				<TextField
 					id="email"
 					name="email"
@@ -112,21 +115,6 @@ const Signup = (props) => {
 					fullWidth
 					required
 				/>
-
-				{/* <TextField
-					id="userType"
-					name="userType"
-					helperText={errors.userType}
-					value={signUp.userType.value}
-					label="User Type"
-					onChange={handleChange}
-					select
-					fullWidth
-					required
-				>
-					<MenuItem value={"borrower"}>Borrower</MenuItem>
-					<MenuItem value={"lender"}>Lender</MenuItem>
-				</TextField> */}
 				
 				<TextField
 					id="password"
@@ -151,6 +139,13 @@ const Signup = (props) => {
 					fullWidth
 					required
 				/>
+				<FormControl component="fieldset" style={radioStyle}>
+					<FormLabel component="legend">Account Type</FormLabel>
+					<RadioGroup  name="userType" value={signUp.value} onChange={handleChange}required>
+						<FormControlLabel value="owner" control={<Radio />} label="Owner" />
+						<FormControlLabel value="renter" control={<Radio />} label="Renter" />
+					</RadioGroup>
+				</FormControl>
 				
 				<Button
 					type="submit"
