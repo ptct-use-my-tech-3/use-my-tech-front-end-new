@@ -14,11 +14,11 @@ import {
 
 } from "@material-ui/core";
 import { signUpFormSchema }   from '../schemas/signUpFormSchema'
-import { axiosWithAuth } from "../helpers/axiosWithAuth";
 import * as Yup from 'yup'
 
 import { postSignup } from "../actions/signupActions";
 import { connect } from "react-redux";
+
 
 
 
@@ -31,6 +31,12 @@ const Signup = (props) => {
 		width: 380,
 		margin: "60px auto",
 	};
+
+	const radioStyle ={
+		margin: "30px auto",
+		display: 'flex',
+		textAlign: 'left'
+	}
 
 	// sets style of button
 	const btnstyle = { margin: "20px 0" };
@@ -56,6 +62,7 @@ const Signup = (props) => {
 
 	//
 	const[disabled, setDisabled] = useState(true);
+	const [RadioValue, setRadioValue] = useState('')
 
 	//
 	const setFormErrors = (name, value)=>{
@@ -68,6 +75,7 @@ const Signup = (props) => {
 	const handleChange = (e) => {
 		const { name, value } = e.target;
 		setFormErrors(name, value)
+		setRadioValue(name,value)
 		setSignup((prevState) => ({
 			...prevState,
 			[name]: value,
@@ -107,13 +115,7 @@ const Signup = (props) => {
 					fullWidth
 					required
 				/>
-				<FormControl component="fieldset">
-					<FormLabel component="legend">Account Type</FormLabel>
-					<RadioGroup aria-label="account type" name="gender1" value={signUp.value} onChange={handleChange}>
-						<FormControlLabel value="owner" control={<Radio />} label="Owner" />
-						<FormControlLabel value="owner" control={<Radio />} label="Renter" />
-					</RadioGroup>
-				</FormControl>
+				
 				<TextField
 					id="password"
 					name="password"
@@ -137,6 +139,13 @@ const Signup = (props) => {
 					fullWidth
 					required
 				/>
+				<FormControl component="fieldset" style={radioStyle}>
+					<FormLabel component="legend">Account Type</FormLabel>
+					<RadioGroup  name="userType" value={signUp.value} onChange={handleChange}required>
+						<FormControlLabel value="owner" control={<Radio />} label="Owner" />
+						<FormControlLabel value="renter" control={<Radio />} label="Renter" />
+					</RadioGroup>
+				</FormControl>
 				
 				<Button
 					type="submit"
