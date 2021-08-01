@@ -108,7 +108,7 @@ const Signup = (props) => {
 					helperText={errors.username}
 					value={signUp.username}
 					onChange={handleChange}
-					email
+					type='email'
 					label="Email/Username"
 					fullWidth
 					required

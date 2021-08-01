@@ -42,7 +42,7 @@ const ImageUpload = props => {
 
                     <CardMedia>
                         <Paper>
-                            <img className={classes.img} src={props.listing.image}/>
+                            <img className={classes.img} src={props.listing.image} alt='item'/>
                         </Paper>
                     </CardMedia>
                 </Grid>

@@ -27,7 +27,7 @@ const ListingCard = props => {
     return ( 
         <div style={cardStyle} onClick={props.handleClick}>
             <p style={nameStyle}> {props.listing.name} </p>
-            <img style={imageStyle} src={props.listing.image}/>
+            <img style={imageStyle} src={props.listing.image} alt='item'/>
         </div>
     );
 }

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Grid, Paper, TextField, Button } from '@material-ui/core';
+import { Grid, Paper, TextField } from '@material-ui/core';
 import ListingCard from './ListingCard';
 import dummyData from '../dummy/listingDummyData';
 
-const ItemsForRent = props => {
+const ItemsForRent = () => {
 	const paperStyle = {
 		padding: 20,
 		height: 'auto',

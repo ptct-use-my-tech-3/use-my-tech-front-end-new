@@ -58,15 +58,28 @@ const Navbar = (props) => {
 	const logout = () => {
 		localStorage.removeItem("token");
 		alert("You've Logged Out!");
-		history.push("/");
+		history.push("/login");
 	};
 
-	// TODO: add list of menu items here for when logged in.
+	
 	const menuItemsLoggedIn = [
 		{
-			menuTitle: "",
+			menuTitle: "Rentals",
+			pageURL: "/rentals",
+		},
+		{
+			menuTitle: "My Rentals",
 			pageURL: "/",
 		},
+		{
+			menuTitle: "My Items",
+			pageURL: "/",
+		},
+		{
+			menuTitle: "Create a Listing",
+			pageURL: "/createListing",
+		},
+
 	];
 	const menuItemsLoggedOut = [
 		{
@@ -84,11 +97,11 @@ const Navbar = (props) => {
 	if (localStorage.getItem("token")) {
 		return (
 			<div className={classes.root}>
-				<AppBar position="static" color="info">
+				<AppBar position="static" color="default">
 					<Toolbar>
 						<IconButton color="inherit">
 							<HomeIcon
-								onClick={() => handleButtonClick("/")}
+								onClick={() => handleButtonClick("/home")}
 								fontSize="large"
 							/>
 						</IconButton>
@@ -133,6 +146,9 @@ const Navbar = (props) => {
 						) : (
 							// displays menu items for logged in if not on a mobile device */
 							<div className={classes.NavbarOptions}>
+								<Button color="inherit" onClick={()=>handleButtonClick('/home')}>
+									Home
+								</Button>
 								{/* maps over logged in navbar items and displays them accordingly */}
 								{menuItemsLoggedIn.map((menuItem) => {
 									const { menuTitle, pageURL } = menuItem;
