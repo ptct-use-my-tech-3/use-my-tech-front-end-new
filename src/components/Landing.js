@@ -6,6 +6,7 @@ import {
 	Paper,
 	Typography,
 } from "@material-ui/core";
+import styled from "styled-components";
 
 const paperStyle = {
     padding: 20,
