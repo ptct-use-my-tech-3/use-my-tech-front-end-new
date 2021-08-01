@@ -15,7 +15,7 @@ const ItemsForRent = () => {
 
     useEffect(() => {
         // Get Listings when components mounts
-
+        setListings()
     }, []);
 
     return (
