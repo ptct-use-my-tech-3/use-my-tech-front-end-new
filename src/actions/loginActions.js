@@ -8,7 +8,7 @@ export const LOGIN_FAILURE = 'LOGIN_FAILURE'
 
 export const postLogin=(login,push)=>(dispatch)=>{
     dispatch({type:LOGIN_START})
-    axios.post(`/api/auth/login`,login)
+    axios.post(`https://use-my-tech-stuff-bw-sra.herokuapp.com/api/auth/login`,login)
     .then(success=>{
         
         dispatch({type:LOGIN_SUCCESS,payload:success.data})
