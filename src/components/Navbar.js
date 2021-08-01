@@ -84,7 +84,7 @@ const Navbar = (props) => {
 	if (localStorage.getItem("token")) {
 		return (
 			<div className={classes.root}>
-				<AppBar position="static" color="info">
+				<AppBar position="static" color="default">
 					<Toolbar>
 						<IconButton color="inherit">
 							<HomeIcon
