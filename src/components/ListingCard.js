@@ -23,7 +23,9 @@ const ListingCard = props => {
         padding: '0px auto',
         boxShadow: '2px 2px 4px black'
     };
-
+    const handleClick =()=>{
+        
+    }
     return ( 
         <div style={cardStyle} onClick={props.handleClick}>
             <p style={nameStyle}> {props.listing.name} </p>

@@ -1,16 +1,13 @@
-import react, {useState, useEffect} from 'react';
+import {useState, useEffect} from 'react';
 import {Grid,
-        AppBar,
         Paper,
         Typography,
-        TextField,
-        FormControlLabel, 
+        TextField, 
         Button,
-        Checkbox} 
+    } 
         from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
 import * as yup from 'yup';
-import axios from 'axios';
 import React from 'react';
 import ImageUpload from './ImageUpload';
 import ListingFormSchema from '../schemas/ListingFormSchema';
