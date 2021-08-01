@@ -8,7 +8,6 @@ import {
 	Link,
 } from "@material-ui/core";
 import { signInFormSchema }   from '../schemas/signInFormSchema';
-import { axiosWithAuth } from "../helpers/axiosWithAuth";
 import * as Yup from 'yup'
 import { postLogin } from "../actions/loginActions";
 import { connect } from "react-redux";
@@ -131,8 +130,8 @@ const Login = (props) => {
 const mapStateToProps=(state)=>{
 	return{
 		login:state.loginReducer.login,
-		error:state.loginReduer.error,
-		loading:state.loginReduer.loading
+		error:state.loginReducer.error,
+		loading:state.loginReducer.loading
 	}
 }
 
