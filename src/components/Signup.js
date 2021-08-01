@@ -37,19 +37,18 @@ const Signup = (props) => {
 
 	// holds state to sign up
 	const [signUp, setSignup] = useState({
-		email: "",
+		username: "",
 		password: "",
-		userType: "",
-		confirmpassword: "",
+		role_name: ""
+		
 	});
 
 	//holds error state
 	const [errors, setErrors]=useState({ 
 		
-		email: "",
-		userType: "",
-		password: "", 
-		confirmpassword: ""
+		username: "",
+		password: "",
+		role_name: ""	
 	
 	})
 	
@@ -97,21 +96,21 @@ const Signup = (props) => {
 				</Grid>
 				
 				<TextField
-					id="email"
-					name="email"
-					helperText={errors.email}
-					value={signUp.email}
+					id="username"
+					name="username"
+					helperText={errors.username}
+					value={signUp.username}
 					onChange={handleChange}
 					email
-					label="Email"
+					label="Email/Username"
 					fullWidth
 					required
 				/>
 				<FormControl component="fieldset">
 					<FormLabel component="legend">Account Type</FormLabel>
-					<RadioGroup aria-label="account type" name="gender1" value={signUp.value} onChange={handleChange}>
+					<RadioGroup aria-label="account type" name="role_name" value={signUp.value} onChange={handleChange}>
 						<FormControlLabel value="owner" control={<Radio />} label="Owner" />
-						<FormControlLabel value="owner" control={<Radio />} label="Renter" />
+						<FormControlLabel value="renter" control={<Radio />} label="Renter" />
 					</RadioGroup>
 				</FormControl>
 				<TextField
@@ -126,17 +125,7 @@ const Signup = (props) => {
 					required
 				/>
 			
-				<TextField
-					id="confirmpassword"
-					name="confirmpassword"
-					helperText={errors.confirmpassword}
-					value={signUp.confirmpassword}
-					onChange={handleChange}
-					label="Confirm Password"
-					type="password"
-					fullWidth
-					required
-				/>
+			
 				
 				<Button
 					type="submit"

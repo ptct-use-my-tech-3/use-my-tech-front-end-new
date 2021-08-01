@@ -8,7 +8,7 @@ export const SIGNUP_FAILURE = 'SIGNUP_FAILURE'
 
 export const postSignup=(signup)=>(dispatch)=>{
     dispatch({type:SIGNUP_START})
-    axios.post(`/api/auth/register`,signup)
+    axios.post(`https://use-my-tech-stuff-bw-sra.herokuapp.com/api/auth/register`,signup)
     .then(success=>{
         dispatch({type:SIGNUP_SUCCESS,payload:success.data})
     })
