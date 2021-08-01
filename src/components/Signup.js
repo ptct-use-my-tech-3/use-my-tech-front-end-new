@@ -21,7 +21,6 @@ import { connect } from "react-redux";
 
 
 
-
 const Signup = (props) => {
 	
 	// sets styling of paper background
@@ -32,37 +31,34 @@ const Signup = (props) => {
 		margin: "60px auto",
 	};
 
-	const radioStyle ={
-		margin: "30px auto",
+	const radioStyling ={
+		margin: '30px auto',
 		display: 'flex',
 		textAlign: 'left'
 	}
-
 	// sets style of button
 	const btnstyle = { margin: "20px 0" };
 
 	// holds state to sign up
 	const [signUp, setSignup] = useState({
-		email: "",
+		username: "",
 		password: "",
-		userType: "",
-		confirmpassword: "",
+		role_name: ""
+		
 	});
 
 	//holds error state
 	const [errors, setErrors]=useState({ 
 		
-		email: "",
-		userType: "",
-		password: "", 
-		confirmpassword: ""
+		username: "",
+		password: "",
+		role_name: ""	
 	
 	})
 	
 
 	//
 	const[disabled, setDisabled] = useState(true);
-	const [RadioValue, setRadioValue] = useState('')
 
 	//
 	const setFormErrors = (name, value)=>{
@@ -75,7 +71,6 @@ const Signup = (props) => {
 	const handleChange = (e) => {
 		const { name, value } = e.target;
 		setFormErrors(name, value)
-		setRadioValue(name,value)
 		setSignup((prevState) => ({
 			...prevState,
 			[name]: value,
@@ -105,13 +100,13 @@ const Signup = (props) => {
 				</Grid>
 				
 				<TextField
-					id="email"
-					name="email"
-					helperText={errors.email}
-					value={signUp.email}
+					id="username"
+					name="username"
+					helperText={errors.username}
+					value={signUp.username}
 					onChange={handleChange}
 					email
-					label="Email"
+					label="Email/Username"
 					fullWidth
 					required
 				/>
@@ -127,21 +122,11 @@ const Signup = (props) => {
 					fullWidth
 					required
 				/>
-			
-				<TextField
-					id="confirmpassword"
-					name="confirmpassword"
-					helperText={errors.confirmpassword}
-					value={signUp.confirmpassword}
-					onChange={handleChange}
-					label="Confirm Password"
-					type="password"
-					fullWidth
-					required
-				/>
-				<FormControl component="fieldset" style={radioStyle}>
-					<FormLabel component="legend">Account Type</FormLabel>
-					<RadioGroup  name="userType" value={signUp.value} onChange={handleChange}required>
+
+
+			<FormControl component="fieldset" style={radioStyling}>
+					<FormLabel component="legend" >Account Type</FormLabel>
+					<RadioGroup aria-label="account type" name="role_name" value={signUp.value} onChange={handleChange}>
 						<FormControlLabel value="owner" control={<Radio />} label="Owner" />
 						<FormControlLabel value="renter" control={<Radio />} label="Renter" />
 					</RadioGroup>
