@@ -6,7 +6,7 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 export const LOGIN_FAILURE = 'LOGIN_FAILURE'
 
 
-export const postLogin=(login)=>(dispatch)=>{
+export const postLogin=(login,push)=>(dispatch)=>{
     dispatch({type:LOGIN_START})
     axios.post(`/api/auth/login`,login)
     .then(success=>{
