@@ -1,4 +1,5 @@
 import { React, useEffect, useState } from "react";
+import { useHistory } from "react-router";
 import {
 	Grid,
 	Paper,
@@ -22,6 +23,8 @@ import { connect } from "react-redux";
 
 
 const Signup = (props) => {
+
+	const {push} = useHistory()
 	
 	// sets styling of paper background
 	const paperStyle = {
@@ -80,7 +83,7 @@ const Signup = (props) => {
 	//
 	const handleSubmit = (e) =>{
 		e.preventDefault();
-		props.postSignup(signUp)
+		props.postSignup(signUp,push)
 
 	}
 
