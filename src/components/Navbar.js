@@ -58,7 +58,7 @@ const Navbar = (props) => {
 	const logout = () => {
 		localStorage.removeItem("token");
 		alert("You've Logged Out!");
-		history.push("/landing");
+		history.push("/");
 	};
 
 	// TODO: add list of menu items here for when logged in.
