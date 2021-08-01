@@ -88,7 +88,7 @@ const Navbar = (props) => {
 					<Toolbar>
 						<IconButton color="inherit">
 							<HomeIcon
-								onClick={() => handleButtonClick("/landing")}
+								onClick={() => handleButtonClick("/")}
 								fontSize="large"
 							/>
 						</IconButton>
@@ -164,7 +164,7 @@ const Navbar = (props) => {
 					<Toolbar>
 						<IconButton color="inherit">
 							<HomeIcon
-								onClick={() => handleButtonClick("/landing")}
+								onClick={() => handleButtonClick("/")}
 								fontSize="large"
 							/>
 						</IconButton>
