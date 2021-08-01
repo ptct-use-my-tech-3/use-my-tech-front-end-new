@@ -122,7 +122,7 @@ const Login = (props) => {
 					</Link>
 				</Typography>
 				{/* <h2>p tag for login error</h2> */}
-				{/* <p id="error" className="error">{error}</p> */}
+				{/* {<p id="errors" className="errors">{errors}</p>}  */}
 			</Paper>
 			</form>
 		</Grid>
