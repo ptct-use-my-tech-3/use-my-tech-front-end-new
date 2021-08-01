@@ -2,7 +2,7 @@ import * as Yup from 'yup';
 
 
 export  const signInFormSchema = Yup.object().shape({
-    email: Yup
+    username: Yup
 		.string()
 		.email("Must be a valid email address.")
 		.required("Must include email address."),

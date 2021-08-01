@@ -1,4 +1,4 @@
-
+import axios from 'axios'
 import { axiosWithAuth } from '../helpers/axiosWithAuth'
 
 
@@ -7,14 +7,16 @@ export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS'
 export const SIGNUP_FAILURE = 'SIGNUP_FAILURE'
 
 
-export const postSignup=(signup)=>(dispatch)=>{
+export const postSignup=(signup,push)=>(dispatch)=>{
     dispatch({type:SIGNUP_START})
-    axiosWithAuth().post(`/api/auth/register`,signup)
+    axios.post(`https://use-my-tech-stuff-bw-sra.herokuapp.com/api/auth/register`,signup)
     .then(success=>{
         dispatch({type:SIGNUP_SUCCESS,payload:success.data})
+        push('/login')
+
     })
     .catch(err=>{
         console.log(err)
-        dispatch({type:SIGNUP_FAILURE,payload:err})
+        dispatch({type:SIGNUP_FAILURE,payload:err.message})
     })
 }
