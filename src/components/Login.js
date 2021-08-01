@@ -81,13 +81,13 @@ const Login = (props) => {
 				</Grid>
 
 				<TextField
-					id="email"
-					name="email"
+					id="username"
+					name="username"
 					helperText={errors.email}
 					value={signIn.email}
 					onChange={handleChange}
 					email
-					label="Email"
+					label="Email/Username"
 					fullWidth
 					required
 					mt={9}
