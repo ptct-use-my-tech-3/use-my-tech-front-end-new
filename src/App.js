@@ -4,7 +4,8 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import UserHome from "./components/UserHome";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { PrivateRoute } from "./components/PrivateRoute";
+
+import ProtectedRoute  from './helpers/ProtectedRoute'
 import Landing from "./components/Landing";
 
 
@@ -19,7 +20,7 @@ function App() {
 					<Route exact path="/" component={Landing} />
 					<Route path="/login" component={Login} />
 					<Route path="/signup" component={Signup} />
-					<PrivateRoute exact path="/home" component={UserHome}/>
+					<ProtectedRoute exact path="/home" component={UserHome}/>
 				</Switch>
 			</div>
 		</Router>

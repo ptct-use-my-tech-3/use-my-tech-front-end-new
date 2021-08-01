@@ -9,7 +9,6 @@ import {
 	Link,
 } from "@material-ui/core";
 import { signInFormSchema }   from '../schemas/signInFormSchema';
-import { axiosWithAuth } from "../helpers/axiosWithAuth";
 import * as Yup from 'yup'
 import { postLogin } from "../actions/loginActions";
 import { connect } from "react-redux";
@@ -63,7 +62,9 @@ const Login = (props) => {
 	// submit token for authentication 
 	const handleSubmit = (e) => {
 		e.preventDefault()
+
 		props.postLogin(signIn,push)
+
 	}
 
 	// disables submit button until form is valid
@@ -125,7 +126,7 @@ const Login = (props) => {
 					</Link>
 				</Typography>
 				{/* <h2>p tag for login error</h2> */}
-				{/* <p id="error" className="error">{error}</p> */}
+				{/* {<p id="errors" className="errors">{errors}</p>}  */}
 			</Paper>
 			</form>
 		</Grid>
