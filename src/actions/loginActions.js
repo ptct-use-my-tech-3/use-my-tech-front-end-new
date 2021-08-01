@@ -1,4 +1,5 @@
 import axios from 'axios'
+import jwtDecode from 'jwt-decode'
 
 
 export const LOGIN_START = 'LOGIN_START'
@@ -13,7 +14,14 @@ export const postLogin=(login,push)=>(dispatch)=>{
         
         dispatch({type:LOGIN_SUCCESS,payload:success.data})
         localStorage.setItem('token',success.data.token)
-        push('/home')
+        const decode = jwtDecode(success.data.token)
+       if(decode.role_name ==='owner'){
+           push('/owner')
+       }
+       else if(decode.role_name === 'renter'){
+           push('/renter')
+       }
+       
     })
     .catch(err=>{
         console.log(err)
