@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect,useHistory } from "react";
 import {
 	Grid,
 	Paper,
@@ -14,6 +14,9 @@ import { postLogin } from "../actions/loginActions";
 import { connect } from "react-redux";
 
 const Login = (props) => {
+
+    const {push} = useHistory()
+
 	// sets paper like style
 	const paperStyle = {
 		padding: 20,
@@ -32,10 +35,10 @@ const Login = (props) => {
 
 	//holds error state
 	const [errors, setErrors]=useState({ 
-		email: "",
+		username: "",
 		password: ""
 	})
-	//NOTE: add back username and usertype once backend is readty. 
+	 
 
 	//
 	const[disabled, setDisabled] = useState(true);
@@ -59,7 +62,7 @@ const Login = (props) => {
 	// submit token for authentication 
 	const handleSubmit = (e) => {
 		e.preventDefault()
-		props.postLogin(signIn)
+		props.postLogin(signIn,push)
 	}
 
 	// disables submit button until form is valid

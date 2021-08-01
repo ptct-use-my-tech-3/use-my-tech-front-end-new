@@ -13,9 +13,11 @@ export const postLogin=(login,push)=>(dispatch)=>{
         
         dispatch({type:LOGIN_SUCCESS,payload:success.data})
         localStorage.setItem('token',success.data.token)
+        push('/home')
     })
     .catch(err=>{
         console.log(err)
         dispatch({type:LOGIN_FAILURE,payload:err})
+        push('/login')
     })
 }
