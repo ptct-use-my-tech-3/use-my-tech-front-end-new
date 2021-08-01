@@ -14,7 +14,6 @@ import {
 
 } from "@material-ui/core";
 import { signUpFormSchema }   from '../schemas/signUpFormSchema'
-import { axiosWithAuth } from "../helpers/axiosWithAuth";
 import * as Yup from 'yup'
 
 import { postSignup } from "../actions/signupActions";
@@ -32,6 +31,11 @@ const Signup = (props) => {
 		margin: "60px auto",
 	};
 
+	const radioStyling ={
+		margin: '30px auto',
+		display: 'flex',
+		textAlign: 'left'
+	}
 	// sets style of button
 	const btnstyle = { margin: "20px 0" };
 
@@ -106,13 +110,7 @@ const Signup = (props) => {
 					fullWidth
 					required
 				/>
-				<FormControl component="fieldset">
-					<FormLabel component="legend">Account Type</FormLabel>
-					<RadioGroup aria-label="account type" name="role_name" value={signUp.value} onChange={handleChange}>
-						<FormControlLabel value="owner" control={<Radio />} label="Owner" />
-						<FormControlLabel value="renter" control={<Radio />} label="Renter" />
-					</RadioGroup>
-				</FormControl>
+				
 				<TextField
 					id="password"
 					name="password"
@@ -124,8 +122,15 @@ const Signup = (props) => {
 					fullWidth
 					required
 				/>
-			
-			
+
+
+			<FormControl component="fieldset" style={radioStyling}>
+					<FormLabel component="legend" >Account Type</FormLabel>
+					<RadioGroup aria-label="account type" name="role_name" value={signUp.value} onChange={handleChange}>
+						<FormControlLabel value="owner" control={<Radio />} label="Owner" />
+						<FormControlLabel value="renter" control={<Radio />} label="Renter" />
+					</RadioGroup>
+				</FormControl>
 				
 				<Button
 					type="submit"
