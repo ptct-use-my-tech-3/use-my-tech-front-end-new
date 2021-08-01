@@ -59,6 +59,8 @@ const Login = (props) => {
 	const handleSubmit = (e) => {
 		e.preventDefault()
 		props.postLogin(signIn)
+		props.history.push('/home')
+	
 	}
 
 	// disables submit button until form is valid
