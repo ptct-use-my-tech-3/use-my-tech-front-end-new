@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useHistory } from "react-router";
 import { fetchItems } from '../actions/ownerActions';
 import { connect } from 'react-redux';
+import Card from './Card'
 import {
 	Grid,
 	Paper,
@@ -72,6 +73,15 @@ const Owner=(props)=>{
                 </Paper>           
                </Grid>
            </div>
+          )
+      }
+      else{
+          return (
+            <div className='container'>            
+            
+            {props.listings.map((char, index )=> 
+            { return <Card key={index} data={char} /> })}
+          </div>
           )
       }
 }

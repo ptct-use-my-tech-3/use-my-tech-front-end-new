@@ -3,11 +3,8 @@ import React from 'react';
 
 import {
 	Grid,
-	Paper,
-	TextField,
-	Button,
-	Typography,
-	Link,
+	Paper,	
+	Typography	
 } from "@material-ui/core";
 
 const paperStyle = {

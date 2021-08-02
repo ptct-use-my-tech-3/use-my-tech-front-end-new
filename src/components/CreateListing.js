@@ -10,9 +10,9 @@ import {Grid,
         from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
 import * as yup from 'yup';
-import axios from 'axios';
+import { useHistory } from 'react-router';
 import React from 'react';
-import ImageUpload from './ImageUpload';
+
 import ListingFormSchema from '../schemas/ListingFormSchema';
 
 import { createItem } from '../actions/ownerActions';
@@ -44,13 +44,13 @@ const useStyles = makeStyles(theme => ({
 
 const CreateListing = props => {
     const classes = useStyles();
-
+    const {push} = useHistory()
     const defaultListing = {
         'id':          '',
         'name':        '',
         'description': '',
         'cost':        0,
-        'image':       undefined, // this should be a string.
+        'image':       '', 
         'tags':        ''
     };
 
@@ -84,7 +84,7 @@ const CreateListing = props => {
         e.preventDefault();
 
         // POST to server
-        props.createItem(listing)
+        props.createItem(listing,push)
     };
 
     // Enable / Disable the Create Listing Button
@@ -116,7 +116,20 @@ const CreateListing = props => {
                                 fullWidth>
                             </TextField>
 
-                            <ImageUpload error={errors.image} updateListing={updateListing} listing={listing}/>
+                            <TextField
+                                error={errors.image}
+                                required
+                                id='listingImage'
+                                value={listing.image}
+                                onChange={handleChange}
+                                name='image'
+                                placeholder='Enter a url for image'
+                                label='Listing Image'
+                                fullWidth
+                                multiline
+                                rows={8}
+                                rowsMax={8}>
+                            </TextField>
 
                             <TextField
                                 error={errors.description}

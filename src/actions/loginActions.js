@@ -14,6 +14,7 @@ export const postLogin=(login,push)=>(dispatch)=>{
         
         dispatch({type:LOGIN_SUCCESS,payload:success.data})
         localStorage.setItem('token',success.data.token)
+        alert("You've been logged in!")
         const decode = jwtDecode(success.data.token)
        if(decode.role_name ==='owner'){
            push('/owner')
@@ -26,6 +27,7 @@ export const postLogin=(login,push)=>(dispatch)=>{
     .catch(err=>{
         console.log(err)
         dispatch({type:LOGIN_FAILURE,payload:err})
+        alert("Sorry login failed!")
         push('/login')
     })
 }

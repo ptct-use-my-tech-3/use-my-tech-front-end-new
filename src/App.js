@@ -8,6 +8,7 @@ import { PrivateRoute } from "./components/PrivateRoute";
 import Landing from "./components/Landing";
 import Owner from "./components/Owner";
 import Renter from './components/Renter'
+import CreateListing from "./components/CreateListing";
 
 
 
@@ -24,6 +25,7 @@ function App() {
 					<Route path="/login" component={Login} />
 					<Route path="/signup" component={Signup} />
 					<PrivateRoute exact path="/owner" component={Owner}/>
+					<PrivateRoute paht="/owner/add-listing" component ={CreateListing}/>
 					<PrivateRoute exact path="/renter" component={Renter}/>
 				</Switch>
 			</div>

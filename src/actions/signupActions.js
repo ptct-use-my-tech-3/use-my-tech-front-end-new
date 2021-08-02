@@ -11,11 +11,12 @@ export const postSignup=(signup,push)=>(dispatch)=>{
     axios.post(`https://use-my-tech-stuff-bw-sra.herokuapp.com/api/auth/register`,signup)
     .then(success=>{
         dispatch({type:SIGNUP_SUCCESS,payload:success.data})
+        alert("Registration successful!!")
         push('/login')
 
     })
     .catch(err=>{
-        console.log(err)
+        alert("Registration failed!!")
         dispatch({type:SIGNUP_FAILURE,payload:err.message})
     })
 }

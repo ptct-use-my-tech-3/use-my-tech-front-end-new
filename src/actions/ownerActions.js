@@ -20,15 +20,16 @@ export const fetchItems=()=>(dispatch)=>{
 }
 
 // allow the owner to create an item for listing
-export const createItem=(item)=>(dispatch)=>{
+export const createItem=(item,push)=>(dispatch)=>{
     dispatch({type:LISTING_START})
     axiosWithAuth().post(`/api/items/`,item)
     .then(success=>{
-        console.log(success)
+        alert('Listing successfully created')
         dispatch({type:LISTING_SUCCESS,payload:success.data})
+        push('/owner')
     })
     .catch(err=>{
-        console.log(err)
+        
         dispatch({type:LISTING_FAILURE,payload:err})
     })
 }
@@ -37,13 +38,14 @@ export const createItem=(item)=>(dispatch)=>{
 // allow owner to delete an item
 export const deleteItem=(item_id)=>(dispatch)=>{
     dispatch({type:LISTING_START})
+    
     axiosWithAuth().delete(`/api/items/${item_id}`)
     .then(success=>{
-        console.log(success)
+        alert("Item successfully deleted!!")
         dispatch({type:LISTING_SUCCESS,payload:success.data})
     })
     .catch(err=>{
-        console.log(err)
+        console.log(item_id)
         dispatch({type:LISTING_FAILURE,payload:err})
     })
 }
